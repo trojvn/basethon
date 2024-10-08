@@ -5,7 +5,7 @@ from typing import Self
 from telethon.errors import UserDeactivatedBanError, UserDeactivatedError
 from telethon.sessions import StringSession
 
-from .telegrambaseclient import TelegramClient
+from .base_client import TelegramClient
 
 TelethonBannedError = (UserDeactivatedError, UserDeactivatedBanError)
 
