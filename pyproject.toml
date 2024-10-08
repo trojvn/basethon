@@ -8,6 +8,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.12"
 telethon = "^1.37.0"
+jsoner = {git = "https://github.com/trojvn/jsoner.git"}
 
 
 [build-system]
