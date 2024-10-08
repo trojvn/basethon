@@ -116,8 +116,8 @@ class BaseData:
 class BaseThon(BaseData):
     def __init__(
         self,
+        item: Path | None,
         json_data: dict,
-        item: Path | None = None,
         retries: int = 50,
         timeout: int = 10,
         raise_error: bool = True,
