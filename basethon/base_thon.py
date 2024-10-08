@@ -1,4 +1,5 @@
 import contextlib
+import logging
 from pathlib import Path
 from typing import Self
 
@@ -120,11 +121,13 @@ class BaseThon(BaseData):
         json_data: dict,
         retries: int = 50,
         timeout: int = 10,
+        debug: bool = False,
         raise_error: bool = True,
     ):
         self.__item, self.__retries, self.__timeout = item, retries, timeout
         super().__init__(json_data, raise_error)
         self.__client = self.__get_client()
+        self.__debug = debug
 
     @property
     def client(self) -> TelegramClient:
@@ -160,6 +163,8 @@ class BaseThon(BaseData):
             return "ERROR_AUTH:BAN_ERROR"
         except Exception as e:
             await self.disconnect()
+            if self.__debug:
+                logging.exception(e)
             return f"ERROR_AUTH:{e}"
 
     async def disconnect(self):
